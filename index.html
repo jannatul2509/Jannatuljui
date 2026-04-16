@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jannatul Jui — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: #f0f2f0;
+      color: #1a1a1a;
+      min-height: 100vh;
+      padding: 2rem 1rem 3rem;
+    }
+
+    .port-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #1a5c3a 0%, #0d3d27 100%);
+      border-radius: 16px;
+      padding: 3rem 2.5rem 2.5rem;
+      margin-bottom: 1.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: 40px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 1.25rem;
+      letter-spacing: 1px;
+      position: relative; z-index: 1;
+    }
+
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 42px;
+      color: #ffffff;
+      margin: 0 0 0.5rem;
+      line-height: 1.1;
+      position: relative; z-index: 1;
+    }
+
+    .hero-tagline {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      position: relative; z-index: 1;
+    }
+
+    .contact-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 0.5px solid rgba(255,255,255,0.15);
+      position: relative; z-index: 1;
+    }
+
+    .contact-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: rgba(255,255,255,0.7);
+      text-decoration: none;
+    }
+
+    .contact-icon {
+      width: 24px; height: 24px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Grid */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 560px) {
+      .two-col { grid-template-columns: 1fr; }
+      .hero-name { font-size: 32px; }
+    }
+
+    /* Cards */
+    .card {
+      background: #ffffff;
+      border: 0.5px solid rgba(0,0,0,0.1);
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+
+    .card-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: #888;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .card-body {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    /* Skills */
+    .skill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 0.25rem;
+    }
+
+    .skill-tag {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    .skill-tag.tech {
+      background: #e8f4ed;
+      color: #1a5c3a;
+      border: 0.5px solid rgba(26,92,58,0.2);
+    }
+
+    .skill-tag.soft {
+      background: #f4f4f4;
+      color: #666;
+      border: 0.5px solid rgba(0,0,0,0.08);
+    }
+
+    /* Project card */
+    .project-card {
+      background: #ffffff;
+      border: 0.5px solid rgba(0,0,0,0.1);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: #1a1a1a;
+    }
+
+    .project-badge {
+      font-size: 11px;
+      font-weight: 500;
+      background: #e8f4ed;
+      color: #1a5c3a;
+      padding: 4px 12px;
+      border-radius: 12px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="port-wrap">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="avatar">JJ</div>
+      <h1 class="hero-name">Jannatul Jui</h1>
+      <p class="hero-tagline">Tech learner · Builder of simple, useful things</p>
+      <div class="contact-strip">
+        <span class="contact-item">
+          <span class="contact-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <rect x="1" y="2.5" width="10" height="7" rx="1.5" stroke="rgba(255,255,255,0.8)" stroke-width="1"/>
+              <path d="M1 4l5 3.5L11 4" stroke="rgba(255,255,255,0.8)" stroke-width="1"/>
+            </svg>
+          </span>
+          jannatuljui@example.com
+        </span>
+        <span class="contact-item">
+          <span class="contact-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <rect x="3" y="1" width="6" height="10" rx="1.5" stroke="rgba(255,255,255,0.8)" stroke-width="1"/>
+              <circle cx="6" cy="9" r="0.8" fill="rgba(255,255,255,0.8)"/>
+            </svg>
+          </span>
+          1234567890
+        </span>
+      </div>
+    </div>
+
+    <!-- About + Skills -->
+    <div class="two-col">
+      <div class="card">
+        <p class="card-label">About me</p>
+        <p class="card-body">I'm Jannatul Jui — passionate about learning new technologies and building practical projects from scratch. I enjoy turning ideas into working software.</p>
+      </div>
+      <div class="card">
+        <p class="card-label">Skills</p>
+        <div class="skill-grid">
+          <span class="skill-tag tech">HTML</span>
+          <span class="skill-tag tech">CSS</span>
+          <span class="skill-tag tech">JavaScript</span>
+          <span class="skill-tag tech">Python</span>
+          <span class="skill-tag soft">Communication</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project -->
+    <div class="project-card">
+      <div class="project-header">
+        <h3 class="project-name">Student Management System</h3>
+        <span class="project-badge">Python</span>
+      </div>
+      <p class="card-body">A lightweight Python application for managing student records — supporting operations like adding, viewing, and deleting data with a clean, simple interface.</p>
+    </div>
+
+    <!-- Footer -->
+    <p class="footer">© 2026 Jannatul Jui</p>
+
+  </div>
+</body>
+</html>
